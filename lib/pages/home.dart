@@ -8,14 +8,16 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Aula Abierta',
-          style: TextStyle(
-              color: Colors.white, fontSize: 30, fontWeight: FontWeight.w500),
+        title: Image.asset(
+          'assets/logos/logo_aulaabierta.png',
+          height: 40, // Ajusta la altura según tus necesidades
         ),
         centerTitle: true,
         backgroundColor: Colors.deepPurple.shade400,
         elevation: 0.0,
+      ),
+      body: const Center(
+        child: Text('Contenido de la página'),
       ),
     );
   }
