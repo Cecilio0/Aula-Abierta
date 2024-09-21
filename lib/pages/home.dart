@@ -1,3 +1,4 @@
+// lib/pages/home.dart
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -10,10 +11,7 @@ class HomePage extends StatelessWidget {
         title: const Text(
           'Aula Abierta',
           style: TextStyle(
-            color: Colors.white,
-            fontSize: 30,
-            fontWeight: FontWeight.w500
-          ),
+              color: Colors.white, fontSize: 30, fontWeight: FontWeight.w500),
         ),
         centerTitle: true,
         backgroundColor: Colors.deepPurple.shade400,
