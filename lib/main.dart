@@ -1,6 +1,5 @@
 // lib/main.dart
 import 'package:aula_abierta/pages/home.dart';
-import 'package:aula_abierta/pages/testPage.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 

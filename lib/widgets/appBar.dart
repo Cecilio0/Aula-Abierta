@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
-  final List<Widget>? actions;
-  final Widget? leading;
+  final bool isBackArrowActive;
 
   const CustomAppBar({
     super.key,
     required this.title,
-    this.actions,
-    this.leading,
+    this.isBackArrowActive = true,
   });
 
   @override
@@ -26,12 +25,21 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       centerTitle: true,
       backgroundColor: Colors.deepPurple.shade400,
       elevation: 0.0,
-      actions: actions, // You can pass action buttons like icons
-      leading: leading, // Optionally pass a custom leading widget like a back button or drawer
+      leading: isBackArrowActive? IconButton(
+        icon: SvgPicture.asset(
+          'assets/icons/left-arrow.svg',
+          color: Colors.white,
+          width: 20,
+          height: 20,
+        ),
+        onPressed: () {
+          Navigator.pop(context);
+        },
+      ): const SizedBox.shrink(),
     );
   }
 
   // Implement PreferredSizeWidget to define the appBar height
   @override
-  Size get preferredSize => Size.fromHeight(kToolbarHeight);
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }

@@ -10,7 +10,8 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CustomAppBar(
-          title: 'Aula Abierta',
+        title: 'Aula Abierta',
+        isBackArrowActive: false,
       ),
       body: Center(
         child: Column(
@@ -25,7 +26,6 @@ class HomePage extends StatelessWidget {
                     "assets/logos/testImage.png",
                     width: 200,
                     height: 200,
-                    // fit: BoxFit.fill,
                   ),
                   const Text(
                     "Bienvenido a la app de conciencia financiera de Aula Abierta 🤗",
@@ -40,7 +40,13 @@ class HomePage extends StatelessWidget {
               CustomButton(
                   text: "Ejemplos cajero",
                   onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => const TestPage()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const TestPage(),
+                            settings: const RouteSettings(name: "EjemplosCajero")
+                        )
+                    );
                   }
               ),
               CustomButton(
