@@ -28,7 +28,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       leading: isBackArrowActive? IconButton(
         icon: SvgPicture.asset(
           'assets/icons/left-arrow.svg',
-          color: Colors.white,
+          colorFilter: const ColorFilter.mode(Colors.white, BlendMode.srcIn),
           width: 20,
           height: 20,
         ),
