@@ -13,7 +13,6 @@ class HomePage extends StatelessWidget {
           title: 'Aula Abierta',
       ),
       body: Center(
-
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -23,7 +22,7 @@ class HomePage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Image.asset(
-                    "assets/images/AulaAbierta.png",
+                    "assets/logos/testImage.png",
                     width: 200,
                     height: 200,
                     // fit: BoxFit.fill,
@@ -38,7 +37,6 @@ class HomePage extends StatelessWidget {
                   ),
                 ]
               ),
-
               CustomButton(
                   text: "Ejemplos cajero",
                   onPressed: () {
