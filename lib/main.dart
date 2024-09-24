@@ -1,6 +1,3 @@
-// lib/main.dart
-import 'dart:ffi';
-
 import 'package:aula_abierta/pages/home.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -16,6 +13,7 @@ void main() async{
   await Hive.openBox('actionsBox');
   await Hive.openBox<bool>('nivelesCajeroBox');
   await Hive.openBox<bool>('nivelesCompradorBox');
+  await Hive.openBox<Map<String, dynamic>>('noteBox');
 
   runApp(const MyApp());
 }
