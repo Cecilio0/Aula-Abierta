@@ -51,7 +51,7 @@ class _LevelSelectionScreenState extends State<LevelSelectionScreen> {
                 itemCount: 10,
                 itemBuilder: (context, index) {
                   return Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 6),
                     child: ElevatedButton(
                       onPressed: _canPlayLevel(index) ? () => _playLevel(index) : () => _lockedLevelPressed(),
                       style: ElevatedButton.styleFrom(
