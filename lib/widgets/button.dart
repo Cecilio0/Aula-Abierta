@@ -20,16 +20,16 @@ class CustomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: onPressed, // Pass the onPressed callback
-      style: ButtonStyle(
-        fixedSize: WidgetStatePropertyAll(
-            size
-        ),
+      style: ElevatedButton.styleFrom(
+        backgroundColor: Colors.deepPurple.shade600,
+        fixedSize: size
       ),
       child: Text(
         text,
         style: const TextStyle(
-            fontSize: 24,
-            fontWeight: FontWeight.w500
+            fontSize: 20,
+            fontWeight: FontWeight.w500,
+            color: Colors.white
         ),
       ),
     );

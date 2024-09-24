@@ -26,6 +26,7 @@ class _ActionScreenState extends State<ActionScreen> {
   @override
   void initState() {
     super.initState();
+
     // Get the already opened box
     actionBox = Hive.box('actionsBox');
   }

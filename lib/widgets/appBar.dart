@@ -3,12 +3,12 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
-  final bool isBackArrowActive;
+  final bool isBackButtonActive;
 
   const CustomAppBar({
     super.key,
     required this.title,
-    this.isBackArrowActive = true,
+    this.isBackButtonActive = true,
   });
 
   @override
@@ -23,14 +23,12 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         ),
       ),
       centerTitle: true,
-      backgroundColor: Colors.deepPurple.shade400,
+      backgroundColor: Colors.deepPurple.shade600,
       elevation: 0.0,
-      leading: isBackArrowActive? IconButton(
-        icon: SvgPicture.asset(
-          'assets/icons/left-arrow.svg',
-          colorFilter: const ColorFilter.mode(Colors.white, BlendMode.srcIn),
-          width: 20,
-          height: 20,
+      leading: isBackButtonActive? BackButton(
+        color: Colors.white,
+        style: const ButtonStyle(
+          iconSize: WidgetStatePropertyAll(30),
         ),
         onPressed: () {
           Navigator.pop(context);

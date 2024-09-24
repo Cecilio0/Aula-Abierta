@@ -1,3 +1,4 @@
+import 'package:aula_abierta/pages/cajero/levelSelection.dart';
 import 'package:aula_abierta/pages/testPage.dart';
 import 'package:aula_abierta/widgets/appBar.dart';
 import 'package:aula_abierta/widgets/button.dart';
@@ -11,7 +12,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: const CustomAppBar(
         title: 'Aula Abierta',
-        isBackArrowActive: false,
+        isBackButtonActive: false,
       ),
       body: Center(
         child: Column(
@@ -43,8 +44,7 @@ class HomePage extends StatelessWidget {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const TestPage(),
-                            settings: const RouteSettings(name: "EjemplosCajero")
+                            builder: (context) => const LevelSelectionScreen()
                         )
                     );
                   }
@@ -52,13 +52,23 @@ class HomePage extends StatelessWidget {
               CustomButton(
                   text: "Ejemplos comprador",
                   onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => const TestPage()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const TestPage()
+                        )
+                    );
                   }
               ),
               CustomButton(
                   text: "Test Page",
                   onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => const TestPage()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const TestPage()
+                        )
+                    );
                   }
               )
             ],
