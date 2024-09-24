@@ -22,7 +22,9 @@ class _LevelSelectionScreenState extends State<LevelSelectionScreen> {
   // Mark a level as completed and store it in Hive
   Future<void> _markLevelAsCompleted(int level) async {
     await _levelBox.put('level_$level', true); // Mark the level as completed
-    setState(() {}); // Update the UI
+    setState(() {
+      _message = "Bien hecho, completaste el nivel ${level + 1}";
+    }); // Update the UI
   }
 
   // Check if the previous level was completed
