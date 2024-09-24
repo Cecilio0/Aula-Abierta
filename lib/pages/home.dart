@@ -15,114 +15,99 @@ class HomePage extends StatelessWidget {
     await noteBox.clear();
 
     // moneda100
-    if (noteBox.get('moneda100', defaultValue: null) == null) {
-      Map<String, dynamic> moneda100 = {
-        'name': 'Moneda 100 pesos',
-        'value': 100,
-        'route': 'assets/monedas/nueva_100.png'
-      };
+    Map<String, dynamic> moneda100 = {
+      'name': 'Moneda 100 pesos',
+      'value': 100,
+      'route': 'assets/monedas/nueva_100.png'
+    };
 
-      noteBox.put('moneda100', moneda100);
-    }
+    noteBox.put('moneda100', moneda100);
 
     // moneda200
-    if (noteBox.get('moneda200', defaultValue: null) == null) {
-      Map<String, dynamic> moneda200 = {
-        'name': 'Moneda 200 pesos',
-        'value': 200,
-        'route': 'assets/monedas/nueva_200.png'
-      };
+    Map<String, dynamic> moneda200 = {
+      'name': 'Moneda 200 pesos',
+      'value': 200,
+    'route': 'assets/monedas/nueva_200.png'
+    };
 
-      noteBox.put('moneda200', moneda200);
-    }
+    noteBox.put('moneda200', moneda200);
+
 
     // moneda500
-    if (noteBox.get('moneda500', defaultValue: null) == null) {
-      Map<String, dynamic> moneda500 = {
-        'name': 'Moneda 500 pesos',
-        'value': 500,
-        'route': 'assets/monedas/nueva_500.png'
-      };
+    Map<String, dynamic> moneda500 = {
+      'name': 'Moneda 500 pesos',
+      'value': 500,
+    'route': 'assets/monedas/nueva_500.png'
+    };
 
-      noteBox.put('moneda500', moneda500);
-    }
+    noteBox.put('moneda500', moneda500);
+
 
     // moneda1000
-    if (noteBox.get('moneda1000', defaultValue: null) == null) {
-      Map<String, dynamic> moneda1000 = {
-        'name': 'Moneda 1,000 pesos',
-        'value': 1000,
-        'route': 'assets/monedas/nueva_1000.png'
-      };
+    Map<String, dynamic> moneda1000 = {
+      'name': 'Moneda 1,000 pesos',
+      'value': 1000,
+    'route': 'assets/monedas/nueva_1000.png'
+    };
 
-      noteBox.put('moneda1000', moneda1000);
-    }
+    noteBox.put('moneda1000', moneda1000);
+
 
     // billete2000
-    if (noteBox.get('billete2000', defaultValue: null) == null) {
-      Map<String, dynamic> billete2000 = {
-        'name': 'Billete 2,000 pesos',
-        'value': 2000,
-        'route': 'assets/billetes/anverso2000.jpg'
-      };
+    Map<String, dynamic> billete2000 = {
+      'name': 'Billete 2,000 pesos',
+      'value': 2000,
+    'route': 'assets/billetes/anverso2000.jpg'
+    };
 
-      noteBox.put('billete2000', billete2000);
-    }
+    noteBox.put('billete2000', billete2000);
+
 
     // billete5000
-    if (noteBox.get('billete5000', defaultValue: null) == null) {
-      Map<String, dynamic> billete5000 = {
-        'name': 'Billete 5,000 pesos',
-        'value': 5000,
-        'route': 'assets/billetes/anverso5000.png'
-      };
+    Map<String, dynamic> billete5000 = {
+      'name': 'Billete 5,000 pesos',
+      'value': 5000,
+    'route': 'assets/billetes/anverso5000.png'
+    };
 
-      noteBox.put('billete5000', billete5000);
-    }
+    noteBox.put('billete5000', billete5000);
+
 
     // billete10000
-    if (noteBox.get('billete10000', defaultValue: null) == null) {
-      Map<String, dynamic> billete10000 = {
-        'name': 'Billete 10,000 pesos',
-        'value': 10000,
-        'route': 'assets/billetes/anverso10000.jpg'
-      };
+    Map<String, dynamic> billete10000 = {
+      'name': 'Billete 10,000 pesos',
+      'value': 10000,
+    'route': 'assets/billetes/anverso10000.jpg'
+    };
 
-      noteBox.put('billete10000', billete10000);
-    }
+    noteBox.put('billete10000', billete10000);
 
     // billete20000
-    if (noteBox.get('billete20000', defaultValue: null) == null) {
-      Map<String, dynamic> billete20000 = {
-        'name': 'Billete 20,000 pesos',
-        'value': 20000,
-        'route': 'assets/billetes/anverso20000.png'
-      };
+    Map<String, dynamic> billete20000 = {
+      'name': 'Billete 20,000 pesos',
+      'value': 20000,
+    'route': 'assets/billetes/anverso20000.png'
+    };
 
-      noteBox.put('billete20000', billete20000);
-    }
+    noteBox.put('billete20000', billete20000);
 
     // billete50000
-    if (noteBox.get('billete50000', defaultValue: null) == null) {
-      Map<String, dynamic> billete50000 = {
-        'name': 'Billete 50,000 pesos',
-        'value': 50000,
-        'route': 'assets/billetes/anverso50000.png'
-      };
+    Map<String, dynamic> billete50000 = {
+      'name': 'Billete 50,000 pesos',
+      'value': 50000,
+    'route': 'assets/billetes/anverso50000.png'
+    };
 
-      noteBox.put('billete50000', billete50000);
-    }
+    noteBox.put('billete50000', billete50000);
 
     // billete100000
-    if (noteBox.get('billete100000', defaultValue: null) == null) {
-      Map<String, dynamic> billete100000 = {
-        'name': 'Billete 100,000 pesos',
-        'value': 100000,
-        'route': 'assets/billetes/anverso100000.jpg'
-      };
+    Map<String, dynamic> billete100000 = {
+      'name': 'Billete 100,000 pesos',
+      'value': 100000,
+    'route': 'assets/billetes/anverso100000.jpg'
+    };
 
-      noteBox.put('billete100000', billete100000);
-    }
+    noteBox.put('billete100000', billete100000);
   }
 
   @override
