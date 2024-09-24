@@ -24,9 +24,10 @@ class HomePage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Image.asset(
-                    "assets/logos/testImage.png",
-                    width: 200,
+                    "assets/logos/logo_aulaabierta.png",
+                    width: 300,
                     height: 200,
+                    color: Colors.black,
                   ),
                   const Text(
                     "Bienvenido a la app de conciencia financiera de Aula Abierta 🤗",

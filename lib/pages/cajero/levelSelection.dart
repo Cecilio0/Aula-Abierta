@@ -11,6 +11,7 @@ class LevelSelectionScreen extends StatefulWidget {
 
 class _LevelSelectionScreenState extends State<LevelSelectionScreen> {
   late Box<bool> _levelBox;
+  String _message = "Selecciona un nivel para continuar";
 
   @override
   void initState() {
@@ -30,50 +31,60 @@ class _LevelSelectionScreenState extends State<LevelSelectionScreen> {
     return _levelBox.get('level_${level - 1}', defaultValue: false) == true;
   }
 
-  // Check if the level has been completed
-  bool _isLevelCompleted(int level) {
-    return _levelBox.get('level_$level', defaultValue: false) == true;
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CustomAppBar(title: 'Seleccion de nivel'),
       body: Center(
-        child: ListView.builder(
-          itemCount: 10,
-          itemBuilder: (context, index) {
-            return Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ElevatedButton(
-                onPressed: _canPlayLevel(index) ? () => _playLevel(index) : () => _lockedLevelMessage(index),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: _canPlayLevel(index) ? Colors.deepPurple.shade600 : Colors.grey.shade600,
-                ),
-                child: Text(
-                  'Level ${index + 1}',
-                  style: const TextStyle(
-                    fontSize: 20,
-                    color: Colors.white
-                  ),
-                ),
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Text(
+                _message, // Display the dynamic message here
+                style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                textAlign: TextAlign.center,
+              )
+            ),
+            Expanded(
+              child: ListView.builder(
+                itemCount: 10,
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ElevatedButton(
+                      onPressed: _canPlayLevel(index) ? () => _playLevel(index) : () => _lockedLevelPressed(),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: _canPlayLevel(index) ? Colors.deepPurple.shade600 : Colors.grey.shade600,
+                      ),
+                      child: Text(
+                        'Nivel ${index + 1}',
+                        style: const TextStyle(
+                            fontSize: 20,
+                            color: Colors.white
+                        ),
+                      ),
+                    ),
+                  );
+                },
               ),
-            );
-          },
-        ),
+            )
+          ],
+        )
       ),
     );
   }
 
-  void _lockedLevelMessage(int level) {
-    print("can't play level ${level + 1} yet");
+  void _lockedLevelPressed() {
+    setState(() {
+      _message = "Este nivel se encuentra bloqueado, intenta jugar niveles anteriores";
+    });
   }
 
   // Handle playing a level and mark it as completed
   void _playLevel(int level) {
     // Simulate playing the level and mark it as completed
     _markLevelAsCompleted(level);
-    print('Playing Level ${level + 1}');
     // You can navigate to the actual game screen if needed
   }
 }
