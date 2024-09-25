@@ -23,7 +23,7 @@ class _LevelSelectionScreenState extends State<LevelSelectionScreen> {
   Future<void> _markLevelAsCompleted(int level) async {
     await _levelBox.put('level_$level', true); // Mark the level as completed
     setState(() {
-      _message = "Bien hecho, completaste el nivel ${level + 1}";
+      _message = "Bien hecho! Completaste el nivel ${level + 1}";
     }); // Update the UI
   }
 

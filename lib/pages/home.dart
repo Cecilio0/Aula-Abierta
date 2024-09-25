@@ -1,5 +1,6 @@
 import 'package:aula_abierta/pages/ayudas/help.dart';
 import 'package:aula_abierta/pages/cajero/levelSelection.dart';
+import 'package:aula_abierta/pages/emparejar/pair.dart';
 import 'package:aula_abierta/pages/testPage.dart';
 import 'package:aula_abierta/widgets/appBar.dart';
 import 'package:aula_abierta/widgets/button.dart';
@@ -27,7 +28,7 @@ class HomePage extends StatelessWidget {
     Map<String, dynamic> moneda200 = {
       'name': 'Moneda 200 pesos',
       'value': 200,
-    'route': 'assets/monedas/nueva_200.png'
+      'route': 'assets/monedas/nueva_200.png'
     };
 
     noteBox.put('moneda200', moneda200);
@@ -37,7 +38,7 @@ class HomePage extends StatelessWidget {
     Map<String, dynamic> moneda500 = {
       'name': 'Moneda 500 pesos',
       'value': 500,
-    'route': 'assets/monedas/nueva_500.png'
+      'route': 'assets/monedas/nueva_500.png'
     };
 
     noteBox.put('moneda500', moneda500);
@@ -47,7 +48,7 @@ class HomePage extends StatelessWidget {
     Map<String, dynamic> moneda1000 = {
       'name': 'Moneda 1,000 pesos',
       'value': 1000,
-    'route': 'assets/monedas/nueva_1000.png'
+      'route': 'assets/monedas/nueva_1000.png'
     };
 
     noteBox.put('moneda1000', moneda1000);
@@ -57,7 +58,7 @@ class HomePage extends StatelessWidget {
     Map<String, dynamic> billete2000 = {
       'name': 'Billete 2,000 pesos',
       'value': 2000,
-    'route': 'assets/billetes/anverso2000.jpg'
+      'route': 'assets/billetes/anverso2000.jpg'
     };
 
     noteBox.put('billete2000', billete2000);
@@ -67,7 +68,7 @@ class HomePage extends StatelessWidget {
     Map<String, dynamic> billete5000 = {
       'name': 'Billete 5,000 pesos',
       'value': 5000,
-    'route': 'assets/billetes/anverso5000.png'
+      'route': 'assets/billetes/anverso5000.png'
     };
 
     noteBox.put('billete5000', billete5000);
@@ -77,7 +78,7 @@ class HomePage extends StatelessWidget {
     Map<String, dynamic> billete10000 = {
       'name': 'Billete 10,000 pesos',
       'value': 10000,
-    'route': 'assets/billetes/anverso10000.jpg'
+      'route': 'assets/billetes/anverso10000.jpg'
     };
 
     noteBox.put('billete10000', billete10000);
@@ -86,7 +87,7 @@ class HomePage extends StatelessWidget {
     Map<String, dynamic> billete20000 = {
       'name': 'Billete 20,000 pesos',
       'value': 20000,
-    'route': 'assets/billetes/anverso20000.png'
+      'route': 'assets/billetes/anverso20000.png'
     };
 
     noteBox.put('billete20000', billete20000);
@@ -95,7 +96,7 @@ class HomePage extends StatelessWidget {
     Map<String, dynamic> billete50000 = {
       'name': 'Billete 50,000 pesos',
       'value': 50000,
-    'route': 'assets/billetes/anverso50000.png'
+      'route': 'assets/billetes/anverso50000.png'
     };
 
     noteBox.put('billete50000', billete50000);
@@ -104,7 +105,7 @@ class HomePage extends StatelessWidget {
     Map<String, dynamic> billete100000 = {
       'name': 'Billete 100,000 pesos',
       'value': 100000,
-    'route': 'assets/billetes/anverso100000.jpg'
+      'route': 'assets/billetes/anverso100000.jpg'
     };
 
     noteBox.put('billete100000', billete100000);
@@ -166,12 +167,12 @@ class HomePage extends StatelessWidget {
                   }
               ),
               CustomButton(
-                  text: "Test Page",
+                  text: "Emparejar",
                   onPressed: () {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const TestPage()
+                            builder: (context) => PairingGame()
                         )
                     );
                   }
