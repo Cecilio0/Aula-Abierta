@@ -127,26 +127,35 @@ class _PairingGameState extends State<PairingGame> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CustomAppBar(title: 'Emparejar'),
-      body: Container(
-        margin: const EdgeInsets.all(5),
-        alignment: Alignment.topCenter,
-        child: SingleChildScrollView(
-          controller: ScrollController(),
-          child: Column(
-            children: [
-              Text(
-                _message,
-                style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                textAlign: TextAlign.center,
+      body: Column(
+        children: [
+          Container(
+            padding: const EdgeInsets.all(10.0),
+            color: Colors.deepPurple.shade600.withOpacity(0.6),
+            child: Text(
+              _message,
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
               ),
-              _buildImageGrid(),
-              const SizedBox(
-                height: 32,
-              ),
-              _buildValueGrid(),
-            ],
+              textAlign: TextAlign.center,
+            ),
           ),
-        ),
+          Expanded(
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.fromLTRB(0, 8, 0, 0),
+              controller: ScrollController(),
+              child: Column(
+                children: [
+                  _buildImageGrid(),
+                  const SizedBox(height: 32),
+                  _buildValueGrid(),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -165,24 +174,21 @@ class _PairingGameState extends State<PairingGame> {
               setState(() {
                 selectedImage = image;
               });
-              _checkPair();},
+              _checkPair();
+            },
             child: Container(
               padding: const EdgeInsets.all(8.0),
               width: 110,
               height: 110,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
-                color: selectedImage == image
-                    ? Colors.grey.shade400
-                    : Colors.transparent,
-                border: Border.all(
-                  color: Colors.black,
-                  width: 1.0,
-                ),
+                color: selectedImage == image ? Colors.grey.shade400 : Colors.transparent,
+                border: Border.all(color: Colors.black, width: 1.0),
               ),
               child: Image.asset(image),
             ),
-          );},
+          );
+        },
       ),
     );
   }
@@ -195,38 +201,31 @@ class _PairingGameState extends State<PairingGame> {
       children: List.generate(
         notes.length,
             (index) {
-          int value = notes
-              .firstWhere((element) => element['value'] == valueOrder[index])['value'];
+          int value = notes.firstWhere((element) => element['value'] == valueOrder[index])['value'];
           return GestureDetector(
             onTap: () {
               setState(() {
                 selectedValue = value;
               });
-              _checkPair();},
+              _checkPair();
+            },
             child: Container(
-              width: 80, // Adjust this width based on your UI design
-              height: 40, // Adjust this height based on your UI design
+              width: 80,
+              height: 40,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
-                color: selectedValue == value
-                    ? Colors.grey.shade400
-                    : Colors.transparent,
-                border: Border.all(
-                  color: Colors.black,
-                  width: 1.0,
-                ),
+                color: selectedValue == value ? Colors.grey.shade400 : Colors.transparent,
+                border: Border.all(color: Colors.black, width: 1.0),
               ),
               child: Center(
                 child: Text(
                   formatter.format(value),
-                  style: const TextStyle(
-                    fontSize: 18.0,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: const TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
                 ),
               ),
             ),
-          );},
+          );
+        },
       ),
     );
   }
