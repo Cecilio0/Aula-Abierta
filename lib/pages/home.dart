@@ -128,12 +128,20 @@ class HomePage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Image.asset(
-                    "assets/logos/logo_aulaabierta.png",
-                    width: 300,
-                    height: 200,
-                    color: Colors.black,
+                  Container(
+                    margin: const EdgeInsets.fromLTRB(0, 0, 0, 20),
+                    child: Image.asset(
+                      "assets/logos/aula-abierta-logo.jpg",
+                      width: 300,
+                      height: 300,
+                    ),
                   ),
+                  // Image.asset(
+                  //   "assets/logos/logo_aulaabierta.png",
+                  //   width: 300,
+                  //   height: 200,
+                  //   color: Colors.black,
+                  // ),
                   const Text(
                     "Bienvenido a la app de conciencia financiera de Aula Abierta 🤗",
                     textAlign: TextAlign.center,

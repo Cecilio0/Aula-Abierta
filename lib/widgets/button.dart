@@ -22,12 +22,13 @@ class CustomButton extends StatelessWidget {
       onPressed: onPressed, // Pass the onPressed callback
       style: ElevatedButton.styleFrom(
         backgroundColor: Colors.deepPurple.shade600,
-        fixedSize: size
+        fixedSize: size,
+        // shape: BeveledRectangleBorder()
       ),
       child: Text(
         text,
-        style: const TextStyle(
-            fontSize: 20,
+        style: TextStyle(
+            fontSize: fontSize,
             fontWeight: FontWeight.w500,
             color: Colors.white
         ),
