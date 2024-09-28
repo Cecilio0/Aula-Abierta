@@ -1,5 +1,6 @@
 import 'package:aula_abierta/pages/cajero/niveles/level1.dart';
 import 'package:aula_abierta/widgets/appBar.dart';
+import 'package:aula_abierta/widgets/button.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 
@@ -55,17 +56,11 @@ class _LevelSelectionScreenState extends State<LevelSelectionScreen> {
                 itemBuilder: (context, index) {
                   return Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 6),
-                    child: ElevatedButton(
+                    child: CustomButton(
+                      text: 'Nivel ${index + 1}',
                       onPressed: _canPlayLevel(index) ? () => _playLevel(index) : () => _lockedLevelPressed(),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: _canPlayLevel(index) ? Colors.deepPurple.shade600 : Colors.grey.shade600,
-                      ),
-                      child: Text(
-                        'Nivel ${index + 1}',
-                        style: const TextStyle(
-                            fontSize: 20,
-                            color: Colors.white
-                        ),
                       ),
                     ),
                   );
@@ -87,12 +82,12 @@ class _LevelSelectionScreenState extends State<LevelSelectionScreen> {
   // Handle playing a level and mark it as completed
   void _playLevel(int level) {
     // Simulate playing the level and mark it as completed
-    Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (context) => NumberGuessingGame()
-        )
-    );
+    // Navigator.push(
+    //     context,
+    //     MaterialPageRoute(
+    //         builder: (context) => NumberGuessingGame()
+    //     )
+    // );
     _markLevelAsCompleted(level);
     // You can navigate to the actual game screen if needed
   }

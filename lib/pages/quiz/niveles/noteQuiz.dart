@@ -17,6 +17,7 @@ class _NoteGuessingGameState extends State<NoteGuessingGame> {
   late List<int> noteOrder;
   late List<int> imageOrder;
 
+  int imageListSize = 4;
   int currentIndex = 0;
   String feedbackMessage = '';
   final formatter = NumberFormat('#,###');
@@ -32,10 +33,10 @@ class _NoteGuessingGameState extends State<NoteGuessingGame> {
   }
 
   void _randomListIncludingIndex(int index){
-    imageOrder = RandomUtils.randomListInRange(4, 0, notes.length);
+    imageOrder = RandomUtils.randomListInRange(imageListSize, 0, notes.length);
 
     if (!imageOrder.contains(index)) {
-      int rand = RandomUtils.randomInRange(0, 4);
+      int rand = RandomUtils.randomInRange(0, imageListSize);
       imageOrder[rand] = index;
     }
   }
@@ -47,6 +48,7 @@ class _NoteGuessingGameState extends State<NoteGuessingGame> {
         feedbackMessage = "¡Correcto! Has acertado la imagen.";
         if (currentIndex < notes.length - 1) {
           currentIndex++;
+          imageListSize = 4 + currentIndex~/3;
           _randomListIncludingIndex(noteOrder[currentIndex]);
         } else {
           _showWinDialog();

@@ -4,7 +4,6 @@ import 'package:aula_abierta/widgets/appBar.dart';
 import 'package:aula_abierta/widgets/button.dart';
 import 'package:aula_abierta/widgets/winDialog.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 class ValueGuessingGame extends StatefulWidget {
   const ValueGuessingGame({super.key});
@@ -30,6 +29,15 @@ class _ValueGuessingGameState extends State<ValueGuessingGame> {
 
   void _checkUserInput() {
     int correctValue = notes[noteOrder[currentIndex]]['value'];
+    if (userInput.contains('.') || userInput.contains(',')){
+      setState(() {
+        feedbackMessage = "Intenta no usar puntos ni comas.";
+        _controller.clear();
+        userInput = '';
+      });
+      return;
+    }
+
     if (int.tryParse(userInput) == correctValue) {
       setState(() {
         feedbackMessage = "¡Correcto! Has acertado el valor.";
@@ -44,6 +52,8 @@ class _ValueGuessingGameState extends State<ValueGuessingGame> {
     } else {
       setState(() {
         feedbackMessage = "Ese valor no es correcto, inténtalo de nuevo.";
+        _controller.clear();
+        userInput = '';
       });
     }
   }
@@ -74,8 +84,8 @@ class _ValueGuessingGameState extends State<ValueGuessingGame> {
             // Display the image
             Image.asset(
               image,
-              width: 150,
-              height: 150,
+              width: 220,
+              height: 220,
             ),
             const SizedBox(height: 16),
             const SizedBox(height: 16),

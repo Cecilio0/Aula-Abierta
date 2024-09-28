@@ -73,7 +73,7 @@ class HomePage extends StatelessWidget {
                   }
               ),
               CustomButton(
-                text: "Ejemplos cajero",
+                text: "Operaciones",
                 onPressed: () {
                   Navigator.push(
                       context,

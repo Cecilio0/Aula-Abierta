@@ -6,6 +6,7 @@ class CustomButton extends StatelessWidget {
   final double fontSize;
   final Color textColor;
   final Size size;
+  final ButtonStyle? style;
 
   const CustomButton({
     super.key,
@@ -14,16 +15,16 @@ class CustomButton extends StatelessWidget {
     this.fontSize = 20,
     this.textColor = Colors.black,
     this.size = const Size(250, 30),
+    this.style,
   });
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: onPressed, // Pass the onPressed callback
-      style: ElevatedButton.styleFrom(
+      style: style ?? ElevatedButton.styleFrom(
         backgroundColor: Colors.deepPurple.shade600,
-        fixedSize: size,
-        // shape: BeveledRectangleBorder()
+        fixedSize: size
       ),
       child: Text(
         text,
