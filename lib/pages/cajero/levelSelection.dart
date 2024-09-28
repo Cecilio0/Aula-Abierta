@@ -1,3 +1,4 @@
+import 'package:aula_abierta/pages/cajero/niveles/level1.dart';
 import 'package:aula_abierta/widgets/appBar.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
@@ -86,6 +87,12 @@ class _LevelSelectionScreenState extends State<LevelSelectionScreen> {
   // Handle playing a level and mark it as completed
   void _playLevel(int level) {
     // Simulate playing the level and mark it as completed
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => NumberGuessingGame()
+        )
+    );
     _markLevelAsCompleted(level);
     // You can navigate to the actual game screen if needed
   }

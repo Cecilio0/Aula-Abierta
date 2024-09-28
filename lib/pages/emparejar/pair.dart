@@ -1,11 +1,13 @@
-import 'dart:math';
-
+import 'package:aula_abierta/utils/noteUtils.dart';
+import 'package:aula_abierta/utils/randomUtils.dart';
 import 'package:aula_abierta/widgets/appBar.dart';
+import 'package:aula_abierta/widgets/winDialog.dart';
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
 import 'package:intl/intl.dart';
 
 class PairingGame extends StatefulWidget {
+  const PairingGame({super.key});
+
   @override
   _PairingGameState createState() => _PairingGameState();
 }
@@ -20,49 +22,16 @@ class _PairingGameState extends State<PairingGame> {
   @override
   void initState() {
     super.initState();
-    _loadDataFromHive();
-    _fillRandomArrays();
-  }
-
-  void _loadDataFromHive() {
-    Box<Map<String, dynamic>> noteBox = Hive.box('noteBox');
-
-    Iterable keys = noteBox.keys;
-
-    notes = [];
-    for (String key in keys) {
-      var note = noteBox.get(key);
-      if (note is Map<String, dynamic>) {
-        notes.add(note);
-      }
-    }
-  }
-
-  List<int> _generateRandomArray(int size) {
-    Random random = Random();
-    List<int> arr = [];
-    arr.add(random.nextInt(size));
-
-    for (int i = 1; i < size; i++) {
-      int rand = random.nextInt(size);
-      while (arr.contains(rand)) {
-        rand = random.nextInt(size);
-      }
-      arr.add(rand);
-    }
-
-    return arr;
-  }
-
-  void _fillRandomArrays() {
-    imageOrder = _generateRandomArray(notes.length)
+    notes = NoteUtils.loadNotes();
+    imageOrder = RandomUtils.randomList(notes.length)
         .map((value) => notes[value]['route'] as String)
         .toList();
-    valueOrder = _generateRandomArray(notes.length)
+    valueOrder = RandomUtils.randomList(notes.length)
         .map((value) => notes[value]['value'] as int)
         .toList();
   }
 
+  int? wasUserCorrect;
   String? selectedImage;
   int? selectedValue;
 
@@ -78,6 +47,7 @@ class _PairingGameState extends State<PairingGame> {
           selectedImage = null;
           selectedValue = null;
           _message = "¡Bien hecho! Combinaste correctamente una moneda o billete con su valor";
+          wasUserCorrect = 1;
         });
 
         if (notes.isEmpty) {
@@ -88,6 +58,7 @@ class _PairingGameState extends State<PairingGame> {
           selectedImage = null;
           selectedValue = null;
           _message = "Esa moneda o billete y ese valor no corresponden, intentalo de nuevo";
+          wasUserCorrect = 0;
         });
       }
     }
@@ -97,28 +68,7 @@ class _PairingGameState extends State<PairingGame> {
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        return AlertDialog(
-          title: const Text("¡Ganaste!"),
-          content: const Text("Has logrado emparejar todos los billetes y monedas con sus valores."),
-          actions: <Widget>[
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop(); // Close popup
-                Navigator.of(context).pop(); // Go back to last page
-              },
-              style: TextButton.styleFrom(
-                backgroundColor: Colors.deepPurple.shade600,
-              ),
-              child: const Text(
-                'Ok',
-                style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w500,
-                    color: Colors.white),
-              ),
-            ),
-          ],
-        );
+        return WinDialog(description: "Has logrado emparejar todos los billetes y monedas con sus valores.");
       },
     );
   }
@@ -131,11 +81,14 @@ class _PairingGameState extends State<PairingGame> {
         children: [
           Container(
             padding: const EdgeInsets.all(10.0),
-            color: Colors.deepPurple.shade600.withOpacity(0.6),
             child: Text(
               _message,
-              style: const TextStyle(
-                color: Colors.white,
+              style: TextStyle(
+                color: wasUserCorrect == 0
+                    ? Colors.red
+                    : wasUserCorrect == 1
+                    ? Colors.green
+                    : Colors.black,
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
               ),

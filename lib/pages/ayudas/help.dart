@@ -1,25 +1,12 @@
+import 'package:aula_abierta/utils/noteUtils.dart';
 import 'package:aula_abierta/widgets/appBar.dart';
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
 
 class HelpScreen extends StatelessWidget {
   const HelpScreen({super.key});
 
   List<Map<String, dynamic>> _loadDataFromHive() {
-    Box<Map<String, dynamic>> noteBox = Hive.box('noteBox');
-
-    Iterable keys = noteBox.keys;
-
-    List<Map<String, dynamic>> notes = [];
-    for (String key in keys) {
-      var note = noteBox.get(key);
-      if (note is Map<String, dynamic>) {
-        notes.add(note);
-      }
-    }
-
-    notes.sort((a, b) => a['value'] - b['value']);
-    return notes;
+    return NoteUtils.loadNotes();
   }
 
   @override
