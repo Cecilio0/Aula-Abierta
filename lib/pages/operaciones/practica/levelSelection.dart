@@ -52,7 +52,7 @@ class _LevelSelectionScreenState extends State<LevelSelectionScreen> {
             ),
             Expanded(
               child: ListView.builder(
-                itemCount: 7,
+                itemCount: 8,
                 itemBuilder: (context, index) {
                   return Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 6),
