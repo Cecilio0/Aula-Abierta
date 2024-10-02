@@ -23,7 +23,7 @@ class _NoteSumlevelState extends State<NoteSumlevel> {
   late List<Map<String, dynamic>> notes;
   late List<List<int>> noteOrder;
 
-  int levelCount = 5;
+  int levelCount = 4;
   int currentIndex = 0;
   String userInput = '';
   String feedbackMessage = 'Escribe el valor en pesos de la suma de las monedas y/o billetes';
@@ -40,26 +40,27 @@ class _NoteSumlevelState extends State<NoteSumlevel> {
         noteOrder = RandomUtils.nRandomDistinctLists(levelCount, 2, 0, 4);
         break;
       case 1:
-        noteOrder = RandomUtils.nRandomDistinctLists(levelCount, 2, 4, notes.length);
+        noteOrder = RandomUtils.nRandomDistinctLists(levelCount, 3, 0, 4);
         break;
       case 2:
-        noteOrder = RandomUtils.nRandomDistinctLists(levelCount, 3, 4, notes.length);
+        noteOrder = RandomUtils.nRandomDistinctLists(levelCount, 2, 4, notes.length);
         break;
       case 3:
-        noteOrder = joinLists(RandomUtils.nRandomDistinctLists(levelCount, 1, 0, 4), RandomUtils.nRandomDistinctLists(levelCount, 1, 4, notes.length));
+        noteOrder = RandomUtils.nRandomDistinctLists(levelCount, 3, 4, notes.length);
         break;
       case 4:
-        noteOrder = joinLists(RandomUtils.nRandomDistinctLists(levelCount, 2, 0, 4), RandomUtils.nRandomDistinctLists(levelCount, 1, 4, notes.length));
+        noteOrder = joinLists(RandomUtils.nRandomDistinctLists(levelCount, 1, 0, 4), RandomUtils.nRandomDistinctLists(levelCount, 1, 4, notes.length));
         break;
       case 5:
-        noteOrder = joinLists(RandomUtils.nRandomDistinctLists(levelCount, 1, 0, 4), RandomUtils.nRandomDistinctLists(levelCount, 2, 4, notes.length));
+        noteOrder = joinLists(RandomUtils.nRandomDistinctLists(levelCount, 2, 0, 4), RandomUtils.nRandomDistinctLists(levelCount, 1, 4, notes.length));
         break;
       case 6:
+        noteOrder = joinLists(RandomUtils.nRandomDistinctLists(levelCount, 1, 0, 4), RandomUtils.nRandomDistinctLists(levelCount, 2, 4, notes.length));
+        break;
+      case 7:
         noteOrder = joinLists(RandomUtils.nRandomDistinctLists(levelCount, 2, 0, 4), RandomUtils.nRandomDistinctLists(levelCount, 2, 4, notes.length));
         break;
     }
-    print(noteOrder);
-    print(notes);
     for (var element in noteOrder) {
       element.sort((noteA, noteB) => notes[noteA]['value'] - notes[noteB]['value']);
     }
