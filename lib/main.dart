@@ -1,5 +1,6 @@
 import 'package:aula_abierta/pages/home.dart';
 import 'package:aula_abierta/utils/noteUtils.dart';
+import 'package:aula_abierta/utils/productUtils.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -16,6 +17,8 @@ void main() async{
   await Hive.openBox<bool>('nivelesCompradorBox');
   await Hive.openBox<Map<String, dynamic>>('noteBox');
   await NoteUtils.saveNotes();
+  await Hive.openBox<Map<String, dynamic>>('productBox');
+  await ProductUtils.saveProducts();
 
   runApp(const MyApp());
 }
