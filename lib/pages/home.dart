@@ -1,8 +1,7 @@
 import 'package:aula_abierta/pages/ayudas/help.dart';
-import 'package:aula_abierta/pages/cajero/levelSelection.dart';
 import 'package:aula_abierta/pages/emparejar/pair.dart';
+import 'package:aula_abierta/pages/operaciones/levelSelection.dart';
 import 'package:aula_abierta/pages/quiz/levelSelection.dart';
-import 'package:aula_abierta/utils/noteUtils.dart';
 import 'package:aula_abierta/widgets/appBar.dart';
 import 'package:aula_abierta/widgets/button.dart';
 import 'package:flutter/material.dart';
@@ -10,13 +9,8 @@ import 'package:flutter/material.dart';
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
-  Future<void> _checkNoteExistence() async {
-    NoteUtils.saveNotes();
-  }
-
   @override
   Widget build(BuildContext context) {
-    _checkNoteExistence();
     return Scaffold(
       appBar: const CustomAppBar(
         title: 'Aula Abierta',
@@ -67,7 +61,7 @@ class HomePage extends StatelessWidget {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => PairingGame()
+                            builder: (context) => const PairingGame()
                         )
                     );
                   }
@@ -78,7 +72,7 @@ class HomePage extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const LevelSelectionScreen()
+                          builder: (context) => const OperationLevelSelectionScreen()
                       )
                   );
                 }

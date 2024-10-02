@@ -37,4 +37,28 @@ class RandomUtils {
     Random random = Random();
     return random.nextInt(end) + start;
   }
+
+  static List<List<int>> nRandomDistinctLists(int n, int size, int start, int end){
+    List<List<int>> arr = [];
+    arr.add(randomListInRange(size, start, end));
+
+    bool flag = false;
+    for (int i = 1; i < n; i++) {
+      List<int> rand = [];
+      do {
+        rand = randomListInRange(size, start, end);
+        flag = false;
+        for (int j = 0; j < arr.length; j++){
+          if (Set.from(rand).containsAll(arr[j]) && Set.from(arr[j]).containsAll(rand)) {
+            flag = true;
+            break;
+          }
+        }
+      } while (flag);
+
+      arr.add(rand);
+    }
+
+    return arr;
+  }
 }

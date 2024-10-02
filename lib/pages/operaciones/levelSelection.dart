@@ -1,12 +1,12 @@
+import 'package:aula_abierta/pages/operaciones/practica/levelSelection.dart';
 import 'package:aula_abierta/pages/quiz/niveles/noteQuiz.dart';
-import 'package:aula_abierta/pages/quiz/niveles/valueQuiz.dart';
 import 'package:aula_abierta/widgets/appBar.dart';
 import 'package:flutter/material.dart';
 
 import '../../widgets/button.dart';
 
-class QuizLevelSelectionScreen extends StatelessWidget {
-  const QuizLevelSelectionScreen({super.key});
+class OperationLevelSelectionScreen extends StatelessWidget {
+  const OperationLevelSelectionScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -28,18 +28,18 @@ class QuizLevelSelectionScreen extends StatelessWidget {
               ),
             ),
             CustomButton(
-                text: "Valores",
+                text: "Practicar",
                 onPressed: () {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => ValueGuessingGame()
+                          builder: (context) => LevelSelectionScreen()
                       )
                   );
                 }
             ),
             CustomButton(
-                text: "Imágenes",
+                text: "Ejemplos vida real",
                 onPressed: () {
                   Navigator.push(
                       context,
