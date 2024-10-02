@@ -52,7 +52,7 @@ class _LevelSelectionScreenState extends State<LevelSelectionScreen> {
             ),
             Expanded(
               child: ListView.builder(
-                itemCount: 3,
+                itemCount: 7,
                 itemBuilder: (context, index) {
                   return Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 6),
@@ -85,7 +85,7 @@ class _LevelSelectionScreenState extends State<LevelSelectionScreen> {
         context,
         MaterialPageRoute(
             builder: (context) => NoteSumlevel(
-              difficulty: level+2,
+              difficulty: level,
               onLevelCompleted: () {
                 _markLevelAsCompleted(level);
               },

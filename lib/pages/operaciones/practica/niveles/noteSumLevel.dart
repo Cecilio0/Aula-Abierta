@@ -34,10 +34,43 @@ class _NoteSumlevelState extends State<NoteSumlevel> {
   void initState() {
     super.initState();
     notes = NoteUtils.loadNotes();
-    noteOrder = RandomUtils.nRandomDistinctLists(levelCount, widget.difficulty, 0, notes.length);
+
+    switch (widget.difficulty) {
+      case 0:
+        noteOrder = RandomUtils.nRandomDistinctLists(levelCount, 2, 0, 4);
+        break;
+      case 1:
+        noteOrder = RandomUtils.nRandomDistinctLists(levelCount, 2, 4, notes.length);
+        break;
+      case 2:
+        noteOrder = RandomUtils.nRandomDistinctLists(levelCount, 3, 4, notes.length);
+        break;
+      case 3:
+        noteOrder = joinLists(RandomUtils.nRandomDistinctLists(levelCount, 1, 0, 4), RandomUtils.nRandomDistinctLists(levelCount, 1, 4, notes.length));
+        break;
+      case 4:
+        noteOrder = joinLists(RandomUtils.nRandomDistinctLists(levelCount, 2, 0, 4), RandomUtils.nRandomDistinctLists(levelCount, 1, 4, notes.length));
+        break;
+      case 5:
+        noteOrder = joinLists(RandomUtils.nRandomDistinctLists(levelCount, 1, 0, 4), RandomUtils.nRandomDistinctLists(levelCount, 2, 4, notes.length));
+        break;
+      case 6:
+        noteOrder = joinLists(RandomUtils.nRandomDistinctLists(levelCount, 2, 0, 4), RandomUtils.nRandomDistinctLists(levelCount, 2, 4, notes.length));
+        break;
+    }
+    print(noteOrder);
+    print(notes);
     for (var element in noteOrder) {
       element.sort((noteA, noteB) => notes[noteA]['value'] - notes[noteB]['value']);
     }
+  }
+
+  List<List<int>> joinLists(List<List<int>> list1, List<List<int>> list2) {
+    List<List<int>> result = [];
+    for (int i = 0; i < list1.length; i++) {
+      result.add([...list1[i], ...list2[i]]);
+    }
+    return result;
   }
 
   void _checkUserInput() {
@@ -102,14 +135,6 @@ class _NoteSumlevelState extends State<NoteSumlevel> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             _buildImageGrid(),
-            // const SizedBox(height: 12),
-            // const Text(
-            //   'Escribe el valor en pesos de la suma de las monedas y/o billetes',
-            //   textAlign: TextAlign.center,
-            //   style: TextStyle(
-            //     fontSize: 20,
-            //   ),
-            // ),
             const SizedBox(height: 12),
             TextField(
               controller: _controller,
