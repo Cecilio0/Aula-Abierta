@@ -77,7 +77,7 @@ class _NoteGuessingGameState extends State<NoteGuessingGame> {
 
     return Scaffold(
       appBar: const CustomAppBar(
-        title: 'Juego de Valor',
+        title: 'Juego de Selección',
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
