@@ -4,14 +4,14 @@ import 'package:aula_abierta/widgets/button.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 
-class LevelSelectionScreen extends StatefulWidget {
-  const LevelSelectionScreen({super.key});
+class PracticeLevelSelectionScreen extends StatefulWidget {
+  const PracticeLevelSelectionScreen({super.key});
 
   @override
-  _LevelSelectionScreenState createState() => _LevelSelectionScreenState();
+  _PracticeLevelSelectionScreenState createState() => _PracticeLevelSelectionScreenState();
 }
 
-class _LevelSelectionScreenState extends State<LevelSelectionScreen> {
+class _PracticeLevelSelectionScreenState extends State<PracticeLevelSelectionScreen> {
   late Box<bool> _levelBox;
   String _message = "Selecciona un nivel para continuar";
 

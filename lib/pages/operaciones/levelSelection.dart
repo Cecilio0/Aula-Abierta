@@ -1,5 +1,5 @@
 import 'package:aula_abierta/pages/operaciones/practica/levelSelection.dart';
-import 'package:aula_abierta/pages/quiz/niveles/noteQuiz.dart';
+import 'package:aula_abierta/pages/operaciones/real/levelSelection.dart';
 import 'package:aula_abierta/widgets/appBar.dart';
 import 'package:flutter/material.dart';
 
@@ -33,7 +33,7 @@ class OperationLevelSelectionScreen extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => LevelSelectionScreen()
+                          builder: (context) => const PracticeLevelSelectionScreen()
                       )
                   );
                 }
@@ -44,7 +44,7 @@ class OperationLevelSelectionScreen extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const NoteGuessingGame()
+                          builder: (context) => const RealLevelSelectionScreen()
                       )
                   );
                 }

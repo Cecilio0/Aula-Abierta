@@ -1,83 +1,49 @@
-import 'package:aula_abierta/utils/noteUtils.dart';
+import 'package:aula_abierta/utils/productUtils.dart';
 import 'package:aula_abierta/utils/randomUtils.dart';
 import 'package:aula_abierta/widgets/appBar.dart';
 import 'package:aula_abierta/widgets/button.dart';
 import 'package:aula_abierta/widgets/winDialog.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
-class NoteSumlevel extends StatefulWidget {
+class ProductSumLevel extends StatefulWidget {
   final int difficulty;
   final VoidCallback onLevelCompleted;
 
-  const NoteSumlevel({
+  const ProductSumLevel({
     super.key,
     required this.difficulty,
     required this.onLevelCompleted,
   });
 
   @override
-  _NoteSumlevelState createState() => _NoteSumlevelState();
+  _ProductSumLevelState createState() => _ProductSumLevelState();
 }
 
-class _NoteSumlevelState extends State<NoteSumlevel> {
-  late List<Map<String, dynamic>> notes;
-  late List<List<int>> noteOrder;
+class _ProductSumLevelState extends State<ProductSumLevel> {
+  late List<Map<String, dynamic>> products;
+  late List<List<int>> productOrder;
+  final formatter = NumberFormat('#,###');
 
-  int levelCount = 4;
+  int levelCount = 5;
   int currentIndex = 0;
   String userInput = '';
-  String feedbackMessage = 'Escribe el valor en pesos de la suma de las monedas y/o billetes';
+  String feedbackMessage = 'Escribe el valor total en pesos de los productos';
   int wasUserCorrect = 2;
   final TextEditingController _controller = TextEditingController();
 
   @override
   void initState() {
     super.initState();
-    notes = NoteUtils.loadNotes();
+    products = ProductUtils.loadProducts();
 
-    switch (widget.difficulty) {
-      case 0:
-        noteOrder = RandomUtils.nRandomDistinctLists(levelCount, 2, 0, 4);
-        break;
-      case 1:
-        noteOrder = RandomUtils.nRandomDistinctLists(levelCount, 3, 0, 4);
-        break;
-      case 2:
-        noteOrder = RandomUtils.nRandomDistinctLists(levelCount, 2, 4, notes.length);
-        break;
-      case 3:
-        noteOrder = RandomUtils.nRandomDistinctLists(levelCount, 3, 4, notes.length);
-        break;
-      case 4:
-        noteOrder = joinLists(RandomUtils.nRandomDistinctLists(levelCount, 1, 0, 4), RandomUtils.nRandomDistinctLists(levelCount, 1, 4, notes.length));
-        break;
-      case 5:
-        noteOrder = joinLists(RandomUtils.nRandomDistinctLists(levelCount, 2, 0, 4), RandomUtils.nRandomDistinctLists(levelCount, 1, 4, notes.length));
-        break;
-      case 6:
-        noteOrder = joinLists(RandomUtils.nRandomDistinctLists(levelCount, 1, 0, 4), RandomUtils.nRandomDistinctLists(levelCount, 2, 4, notes.length));
-        break;
-      case 7:
-        noteOrder = joinLists(RandomUtils.nRandomDistinctLists(levelCount, 2, 0, 4), RandomUtils.nRandomDistinctLists(levelCount, 2, 4, notes.length));
-        break;
-    }
-    for (var element in noteOrder) {
-      element.sort((noteA, noteB) => notes[noteA]['value'] - notes[noteB]['value']);
-    }
-  }
-
-  List<List<int>> joinLists(List<List<int>> list1, List<List<int>> list2) {
-    List<List<int>> result = [];
-    for (int i = 0; i < list1.length; i++) {
-      result.add([...list1[i], ...list2[i]]);
-    }
-    return result;
+    productOrder = RandomUtils.nRandomDistinctLists(levelCount, 2, 0, products.length);
   }
 
   void _checkUserInput() {
     int correctValue = 0;
-    for(int i = 0; i < noteOrder[currentIndex].length; i++){
-      correctValue += notes[noteOrder[currentIndex][i]]['value'] as int;
+    for(int i = 0; i < productOrder[currentIndex].length; i++){
+      correctValue += products[productOrder[currentIndex][i]]['value'] as int;
     }
 
     if (userInput.contains('.') || userInput.contains(',')){
@@ -116,7 +82,7 @@ class _NoteSumlevelState extends State<NoteSumlevel> {
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        return WinDialog(description: "Has logrado indicar todos los valores de las sumas de las monedas y/o billetes");
+        return WinDialog(description: "Has logrado indicar todas los valores de las sumas de los productos");
       },
     ).then((_) {
       widget.onLevelCompleted();
@@ -181,28 +147,47 @@ class _NoteSumlevelState extends State<NoteSumlevel> {
       alignment: WrapAlignment.center,
       crossAxisAlignment: WrapCrossAlignment.center,
       children: List.generate(
-        (noteOrder[currentIndex].length*2-1),
+        (productOrder[currentIndex].length*2-1),
             (index) {
           if ((index & 1) == 0){
-            String image = notes[noteOrder[currentIndex][index~/2]]['route'];
+            String name = products[productOrder[currentIndex][index~/2]]['name'];
+            String image = products[productOrder[currentIndex][index~/2]]['route'];
+            int value = products[productOrder[currentIndex][index~/2]]['value'] as int;
             return Container(
-              padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 4),
-              width: 110,
-              height: 110,
-              child: Image.asset(image),
+              padding: const EdgeInsets.all(8.0),
+              width: 140,
+              height: 200,
+              child: Column(
+                children: [
+                  Center(
+                    child: Text(
+                        '$name\n\$${formatter.format(value)}',
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          fontSize: 16,
+                        )
+                    ),
+                  ),
+                  Image.asset(
+                    image,
+                    height: 110,
+                    width: 110,
+                  ),
+                ],
+              ),
             );
           } else {
             return const SizedBox(
-              width: 20,
-              height: 50,
-              child: Center(
-                child: Text(
-                  '+',
-                  style: TextStyle(
-                    fontSize: 26,
+                width: 20,
+                height: 50,
+                child: Center(
+                  child: Text(
+                    '+',
+                    style: TextStyle(
+                      fontSize: 26,
+                    ),
                   ),
-                ),
-              )
+                )
             );
           }
         },

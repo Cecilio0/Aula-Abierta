@@ -14,7 +14,7 @@ void main() async{
   // Due to ease of use, boxes are being opened here
   await Hive.openBox('actionsBox');
   await Hive.openBox<bool>('nivelesPracticaBox');
-  await Hive.openBox<bool>('nivelesCompradorBox');
+  await Hive.openBox<bool>('nivelesRealesBox');
   await Hive.openBox<Map<String, dynamic>>('noteBox');
   await NoteUtils.saveNotes();
   await Hive.openBox<Map<String, dynamic>>('productBox');

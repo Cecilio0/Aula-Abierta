@@ -115,7 +115,7 @@ class ProductUtils {
 
     // 2 libras de sal
     Map<String, dynamic> sal = {
-      'name': '2 Libras de Sal',
+      'name': 'Kilo de Sal',
       'value': 2300,
       'route': 'assets/productos/sal.png'
     };
@@ -125,7 +125,7 @@ class ProductUtils {
 
     // 2 libras de azúcar
     Map<String, dynamic> azucar = {
-      'name': '2 Libras de Azúcar',
+      'name': 'Kilo de Azúcar',
       'value': 4700,
       'route': 'assets/productos/azucar.png'
     };
