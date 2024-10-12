@@ -121,7 +121,6 @@ class _ProductSumLevelState extends State<ProductSumLevel> {
                 text: 'Comprobar',
                 onPressed: _checkUserInput
             ),
-            const SizedBox(height: 12),
             Text(
               feedbackMessage,
               textAlign: TextAlign.center,
@@ -170,8 +169,8 @@ class _ProductSumLevelState extends State<ProductSumLevel> {
                   ),
                   Image.asset(
                     image,
-                    height: 110,
-                    width: 110,
+                    height: 100,
+                    width: 100,
                   ),
                 ],
               ),

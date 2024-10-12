@@ -35,13 +35,13 @@ class HelpScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: SizedBox(
-                height: 400, // Limit height for the grid
+                height: 600, // Limit height for the grid
                 child: GridView.count(
                   crossAxisCount: 2,
                   crossAxisSpacing: 10.0,
                   mainAxisSpacing: 10.0,
                   physics: const NeverScrollableScrollPhysics(), // Disable grid's scrolling
-                  children: List.generate(4, (index) {
+                  children: List.generate(5, (index) {
                     return Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -83,18 +83,18 @@ class HelpScreen extends StatelessWidget {
                   crossAxisSpacing: 10.0,
                   mainAxisSpacing: 10.0,
                   physics: const NeverScrollableScrollPhysics(), // Disable grid's scrolling
-                  children: List.generate(notes.length - 4, (index) {
+                  children: List.generate(notes.length - 5, (index) {
                     return Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Image.asset(
-                          notes.elementAt(index + 4)['route'],
+                          notes.elementAt(index + 5)['route'],
                           width: 150,
                           height: 150,
                         ),
                         Text(
-                          notes.elementAt(index + 4)['name'],
+                          notes.elementAt(index + 5)['name'],
                           style: const TextStyle(fontSize: 16),
                         ),
                       ],

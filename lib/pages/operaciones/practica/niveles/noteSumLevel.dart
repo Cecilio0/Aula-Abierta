@@ -37,28 +37,28 @@ class _NoteSumlevelState extends State<NoteSumlevel> {
 
     switch (widget.difficulty) {
       case 0:
-        noteOrder = RandomUtils.nRandomDistinctLists(levelCount, 2, 0, 4);
+        noteOrder = RandomUtils.nRandomDistinctLists(levelCount, 2, 0, 5);
         break;
       case 1:
-        noteOrder = RandomUtils.nRandomDistinctLists(levelCount, 3, 0, 4);
+        noteOrder = RandomUtils.nRandomDistinctLists(levelCount, 3, 0, 5);
         break;
       case 2:
-        noteOrder = RandomUtils.nRandomDistinctLists(levelCount, 2, 4, notes.length);
+        noteOrder = RandomUtils.nRandomDistinctLists(levelCount, 2, 5, notes.length);
         break;
       case 3:
-        noteOrder = RandomUtils.nRandomDistinctLists(levelCount, 3, 4, notes.length);
+        noteOrder = RandomUtils.nRandomDistinctLists(levelCount, 3, 5, notes.length);
         break;
       case 4:
-        noteOrder = joinLists(RandomUtils.nRandomDistinctLists(levelCount, 1, 0, 4), RandomUtils.nRandomDistinctLists(levelCount, 1, 4, notes.length));
+        noteOrder = joinLists(RandomUtils.nRandomDistinctLists(levelCount, 1, 0, 5), RandomUtils.nRandomDistinctLists(levelCount, 1, 5, notes.length));
         break;
       case 5:
-        noteOrder = joinLists(RandomUtils.nRandomDistinctLists(levelCount, 2, 0, 4), RandomUtils.nRandomDistinctLists(levelCount, 1, 4, notes.length));
+        noteOrder = joinLists(RandomUtils.nRandomDistinctLists(levelCount, 2, 0, 5), RandomUtils.nRandomDistinctLists(levelCount, 1, 5, notes.length));
         break;
       case 6:
-        noteOrder = joinLists(RandomUtils.nRandomDistinctLists(levelCount, 1, 0, 4), RandomUtils.nRandomDistinctLists(levelCount, 2, 4, notes.length));
+        noteOrder = joinLists(RandomUtils.nRandomDistinctLists(levelCount, 1, 0, 5), RandomUtils.nRandomDistinctLists(levelCount, 2, 5, notes.length));
         break;
       case 7:
-        noteOrder = joinLists(RandomUtils.nRandomDistinctLists(levelCount, 2, 0, 4), RandomUtils.nRandomDistinctLists(levelCount, 2, 4, notes.length));
+        noteOrder = joinLists(RandomUtils.nRandomDistinctLists(levelCount, 2, 0, 5), RandomUtils.nRandomDistinctLists(levelCount, 2, 5, notes.length));
         break;
     }
     for (var element in noteOrder) {
@@ -155,7 +155,6 @@ class _NoteSumlevelState extends State<NoteSumlevel> {
                 text: 'Comprobar',
                 onPressed: _checkUserInput
             ),
-            const SizedBox(height: 12),
             Text(
               feedbackMessage,
               textAlign: TextAlign.center,
@@ -176,7 +175,7 @@ class _NoteSumlevelState extends State<NoteSumlevel> {
 
   Widget _buildImageGrid() {
     return Wrap(
-      spacing: 12.0,
+      spacing: 10.0,
       runSpacing: 0,
       alignment: WrapAlignment.center,
       crossAxisAlignment: WrapCrossAlignment.center,
@@ -187,8 +186,8 @@ class _NoteSumlevelState extends State<NoteSumlevel> {
             String image = notes[noteOrder[currentIndex][index~/2]]['route'];
             return Container(
               padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 4),
-              width: 110,
-              height: 110,
+              width: 105,
+              height: 105,
               child: Image.asset(image),
             );
           } else {
