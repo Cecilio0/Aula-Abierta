@@ -4,6 +4,7 @@ import 'package:aula_abierta/widgets/appBar.dart';
 import 'package:aula_abierta/widgets/button.dart';
 import 'package:aula_abierta/widgets/winDialog.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class ValueGuessingGame extends StatefulWidget {
   const ValueGuessingGame({super.key});
@@ -15,6 +16,9 @@ class ValueGuessingGame extends StatefulWidget {
 class _ValueGuessingGameState extends State<ValueGuessingGame> {
   late List<Map<String, dynamic>> notes;
   late List<int> noteOrder;
+
+  final commaFormatter = NumberFormat('#,###', 'en_US');
+  final dotFormatter = NumberFormat('#,###', 'de_DE');
 
   int currentIndex = 0;
   String userInput = '';
@@ -29,16 +33,14 @@ class _ValueGuessingGameState extends State<ValueGuessingGame> {
 
   void _checkUserInput() {
     int correctValue = notes[noteOrder[currentIndex]]['value'];
-    if (userInput.contains('.') || userInput.contains(',')){
-      setState(() {
-        feedbackMessage = "Intenta no usar puntos ni comas.";
-        _controller.clear();
-        userInput = '';
-      });
-      return;
-    }
 
-    if (int.tryParse(userInput) == correctValue) {
+    List<String> correctValues = [
+      correctValue.toString(),
+      dotFormatter.format(correctValue),
+      commaFormatter.format(correctValue)
+    ];
+
+    if (correctValues.contains(userInput)) {
       setState(() {
         feedbackMessage = "¡Correcto! Has acertado el valor.";
         if (currentIndex < notes.length - 1) {

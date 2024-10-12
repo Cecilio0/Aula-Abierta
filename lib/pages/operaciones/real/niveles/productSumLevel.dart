@@ -23,7 +23,8 @@ class ProductSumLevel extends StatefulWidget {
 class _ProductSumLevelState extends State<ProductSumLevel> {
   late List<Map<String, dynamic>> products;
   late List<List<int>> productOrder;
-  final formatter = NumberFormat('#,###');
+  final commaFormatter = NumberFormat('#,###', 'en_US');
+  final dotFormatter = NumberFormat('#,###', 'de_DE');
 
   int levelCount = 5;
   int currentIndex = 0;
@@ -46,17 +47,13 @@ class _ProductSumLevelState extends State<ProductSumLevel> {
       correctValue += products[productOrder[currentIndex][i]]['value'] as int;
     }
 
-    if (userInput.contains('.') || userInput.contains(',')){
-      setState(() {
-        feedbackMessage = "Intenta no usar puntos ni comas.";
-        _controller.clear();
-        userInput = '';
-        wasUserCorrect = 0;
-      });
-      return;
-    }
+    List<String> correctValues = [
+      correctValue.toString(),
+      dotFormatter.format(correctValue),
+      commaFormatter.format(correctValue)
+    ];
 
-    if (int.tryParse(userInput) == correctValue) {
+    if (correctValues.contains(userInput)) {
       setState(() {
         feedbackMessage = "¡Correcto! Has acertado el valor.";
         if (currentIndex < levelCount - 1) {
@@ -160,7 +157,7 @@ class _ProductSumLevelState extends State<ProductSumLevel> {
                 children: [
                   Center(
                     child: Text(
-                        '$name\n\$${formatter.format(value)}',
+                        '$name\n\$${commaFormatter.format(value)}',
                         textAlign: TextAlign.center,
                         style: const TextStyle(
                           fontSize: 16,

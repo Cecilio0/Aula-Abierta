@@ -4,6 +4,7 @@ import 'package:aula_abierta/widgets/appBar.dart';
 import 'package:aula_abierta/widgets/button.dart';
 import 'package:aula_abierta/widgets/winDialog.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class NoteSumlevel extends StatefulWidget {
   final int difficulty;
@@ -22,6 +23,9 @@ class NoteSumlevel extends StatefulWidget {
 class _NoteSumlevelState extends State<NoteSumlevel> {
   late List<Map<String, dynamic>> notes;
   late List<List<int>> noteOrder;
+  
+  final commaFormatter = NumberFormat('#,###', 'en_US');
+  final dotFormatter = NumberFormat('#,###', 'de_DE');
 
   int levelCount = 4;
   int currentIndex = 0;
@@ -79,18 +83,14 @@ class _NoteSumlevelState extends State<NoteSumlevel> {
     for(int i = 0; i < noteOrder[currentIndex].length; i++){
       correctValue += notes[noteOrder[currentIndex][i]]['value'] as int;
     }
+    
+    List<String> correctValues = [
+      correctValue.toString(),
+      dotFormatter.format(correctValue),
+      commaFormatter.format(correctValue)
+    ];
 
-    if (userInput.contains('.') || userInput.contains(',')){
-      setState(() {
-        feedbackMessage = "Intenta no usar puntos ni comas.";
-        _controller.clear();
-        userInput = '';
-        wasUserCorrect = 0;
-      });
-      return;
-    }
-
-    if (int.tryParse(userInput) == correctValue) {
+    if (correctValues.contains(userInput)) {
       setState(() {
         feedbackMessage = "¡Correcto! Has acertado el valor.";
         if (currentIndex < levelCount - 1) {
