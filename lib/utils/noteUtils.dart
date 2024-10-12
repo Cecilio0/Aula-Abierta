@@ -25,6 +25,15 @@ class NoteUtils {
     await noteBox.clear();
 
     // moneda100
+    Map<String, dynamic> moneda50 = {
+      'name': 'Moneda 50 pesos',
+      'value': 50,
+      'route': 'assets/monedas/nueva_50.png'
+    };
+
+    noteBox.put('moneda50', moneda50);
+
+    // moneda100
     Map<String, dynamic> moneda100 = {
       'name': 'Moneda 100 pesos',
       'value': 100,

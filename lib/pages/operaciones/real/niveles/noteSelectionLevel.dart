@@ -71,13 +71,19 @@ class _NoteSelectionLevelState extends State<NoteSelectionLevel> {
       correctValue += products[productOrder[currentIndex][i]]['value'] as int;
     }
 
+    // TODO: fix this, as it is selecting the leftmost note with a value greater than or equal to the correct value
     String? correctImage;
+    int correctIndex = 0;
+    int lowestPositiveDifference = 1000000;
     for(int i = 0; i < notes[currentIndex].length; i++){
-      if(notes[noteOrder[currentIndex][i]]['value'] as int >= correctValue) {
-        correctImage = notes[noteOrder[currentIndex][i]]['route'];
-        break;
+      int difference = (notes[noteOrder[currentIndex][i]]['value'] as int) - correctValue;
+      if(difference > 0 && difference < lowestPositiveDifference){
+        lowestPositiveDifference = difference;
+        correctIndex = i;
       }
     }
+
+    correctImage = notes[noteOrder[currentIndex][correctIndex]]['route'];
 
     if (selectedImage == correctImage) {
       setState(() {

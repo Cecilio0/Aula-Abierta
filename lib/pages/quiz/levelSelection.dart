@@ -33,7 +33,7 @@ class QuizLevelSelectionScreen extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => ValueGuessingGame()
+                          builder: (context) => const ValueGuessingGame()
                       )
                   );
                 }
