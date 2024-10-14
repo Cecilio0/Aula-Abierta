@@ -4,15 +4,18 @@ import 'package:aula_abierta/widgets/appBar.dart';
 import 'package:aula_abierta/widgets/button.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
+import 'package:aula_abierta/config/app_config.dart';
 
 class PracticeLevelSelectionScreen extends StatefulWidget {
   const PracticeLevelSelectionScreen({super.key});
 
   @override
-  _PracticeLevelSelectionScreenState createState() => _PracticeLevelSelectionScreenState();
+  _PracticeLevelSelectionScreenState createState() =>
+      _PracticeLevelSelectionScreenState();
 }
 
-class _PracticeLevelSelectionScreenState extends State<PracticeLevelSelectionScreen> {
+class _PracticeLevelSelectionScreenState
+    extends State<PracticeLevelSelectionScreen> {
   late Box<bool> _levelBox;
   String _message = "Selecciona un nivel para continuar";
 
@@ -32,6 +35,7 @@ class _PracticeLevelSelectionScreenState extends State<PracticeLevelSelectionScr
 
   // Check if the previous level was completed
   bool _canPlayLevel(int level) {
+    if (AppConfig().isDevMode) return true; // Always allow in dev mode
     if (level == 0) return true; // First level is always playable
     return _levelBox.get('level_${level - 1}', defaultValue: false) == true;
   }
@@ -41,42 +45,47 @@ class _PracticeLevelSelectionScreenState extends State<PracticeLevelSelectionScr
     return Scaffold(
       appBar: const CustomAppBar(title: 'Selección de nivel'),
       body: Center(
-        child: Column(
-          children: [
-            Padding(
+          child: Column(
+        children: [
+          Padding(
               padding: const EdgeInsets.all(16.0),
               child: Text(
                 _message,
-                style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                style:
+                    const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 textAlign: TextAlign.center,
-              )
-            ),
-            Expanded(
-              child: ListView.builder(
-                itemCount: 10,
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 6),
-                    child: CustomButton(
-                      text: 'Nivel ${index + 1}',
-                      onPressed: _canPlayLevel(index) ? () => _playLevel(index) : () => _lockedLevelPressed(),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: _canPlayLevel(index) ? Colors.deepPurple.shade600 : Colors.grey.shade600,
-                      ),
+              )),
+          Expanded(
+            child: ListView.builder(
+              itemCount: 10,
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 50, vertical: 6),
+                  child: CustomButton(
+                    text: 'Nivel ${index + 1}',
+                    onPressed: _canPlayLevel(index)
+                        ? () => _playLevel(index)
+                        : () => _lockedLevelPressed(),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: _canPlayLevel(index)
+                          ? Colors.deepPurple.shade600
+                          : Colors.grey.shade600,
                     ),
-                  );
-                },
-              ),
-            )
-          ],
-        )
-      ),
+                  ),
+                );
+              },
+            ),
+          )
+        ],
+      )),
     );
   }
 
   void _lockedLevelPressed() {
     setState(() {
-      _message = "Este nivel se encuentra bloqueado, intenta jugar niveles anteriores";
+      _message =
+          "Este nivel se encuentra bloqueado, intenta jugar niveles anteriores";
     });
   }
 
@@ -87,18 +96,16 @@ class _PracticeLevelSelectionScreenState extends State<PracticeLevelSelectionScr
         MaterialPageRoute(
             builder: (context) => level < 5
                 ? NoteSumlevel(
-              difficulty: level,
-              onLevelCompleted: () {
-                _markLevelAsCompleted(level);
-              },
-            )
+                    difficulty: level,
+                    onLevelCompleted: () {
+                      _markLevelAsCompleted(level);
+                    },
+                  )
                 : NoteSubtractionLevel(
-                difficulty: level-5,
-                onLevelCompleted: () {
-                  _markLevelAsCompleted(level);
-                },
-            )
-        )
-    );
+                    difficulty: level - 5,
+                    onLevelCompleted: () {
+                      _markLevelAsCompleted(level);
+                    },
+                  )));
   }
 }
