@@ -1,4 +1,5 @@
 import 'package:aula_abierta/pages/operaciones/real/niveles/noteSelectionLevel.dart';
+import 'package:aula_abierta/pages/operaciones/real/niveles/productSubtractionLevel.dart';
 import 'package:aula_abierta/pages/operaciones/real/niveles/productSumLevel.dart';
 import 'package:aula_abierta/widgets/appBar.dart';
 import 'package:aula_abierta/widgets/button.dart';
@@ -53,7 +54,7 @@ class _RealLevelSelectionScreenState extends State<RealLevelSelectionScreen> {
               ),
               Expanded(
                 child: ListView.builder(
-                  itemCount: 6,
+                  itemCount: 9,
                   itemBuilder: (context, index) {
                     return Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 6),
@@ -92,11 +93,18 @@ class _RealLevelSelectionScreenState extends State<RealLevelSelectionScreen> {
                 _markLevelAsCompleted(level);
               },
             )
-                : NoteSelectionLevel(
-              difficulty: level,
+                : level < 6
+                ? NoteSelectionLevel(
+              difficulty: level-3,
               onLevelCompleted: () {
                 _markLevelAsCompleted(level);
               },
+            )
+                : ProductSubtractionLevel(
+                difficulty: level-6,
+                onLevelCompleted: () {
+                  _markLevelAsCompleted(level);
+                }
             )
         )
     );

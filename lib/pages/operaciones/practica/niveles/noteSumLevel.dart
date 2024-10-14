@@ -44,24 +44,15 @@ class _NoteSumlevelState extends State<NoteSumlevel> {
         noteOrder = RandomUtils.nRandomDistinctLists(levelCount, 2, 0, 5);
         break;
       case 1:
-        noteOrder = RandomUtils.nRandomDistinctLists(levelCount, 3, 0, 5);
+        noteOrder = joinLists(RandomUtils.nRandomDistinctLists(levelCount, 1, 0, 5), RandomUtils.nRandomDistinctLists(levelCount, 1, 5, notes.length));
         break;
       case 2:
         noteOrder = RandomUtils.nRandomDistinctLists(levelCount, 2, 5, notes.length);
         break;
       case 3:
-        noteOrder = RandomUtils.nRandomDistinctLists(levelCount, 3, 5, notes.length);
-        break;
-      case 4:
-        noteOrder = joinLists(RandomUtils.nRandomDistinctLists(levelCount, 1, 0, 5), RandomUtils.nRandomDistinctLists(levelCount, 1, 5, notes.length));
-        break;
-      case 5:
         noteOrder = joinLists(RandomUtils.nRandomDistinctLists(levelCount, 2, 0, 5), RandomUtils.nRandomDistinctLists(levelCount, 1, 5, notes.length));
         break;
-      case 6:
-        noteOrder = joinLists(RandomUtils.nRandomDistinctLists(levelCount, 1, 0, 5), RandomUtils.nRandomDistinctLists(levelCount, 2, 5, notes.length));
-        break;
-      case 7:
+      case 4:
         noteOrder = joinLists(RandomUtils.nRandomDistinctLists(levelCount, 2, 0, 5), RandomUtils.nRandomDistinctLists(levelCount, 2, 5, notes.length));
         break;
     }

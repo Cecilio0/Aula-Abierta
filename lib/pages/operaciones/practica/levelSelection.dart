@@ -1,3 +1,4 @@
+import 'package:aula_abierta/pages/operaciones/practica/niveles/noteSubtractionLevel.dart';
 import 'package:aula_abierta/pages/operaciones/practica/niveles/noteSumLevel.dart';
 import 'package:aula_abierta/widgets/appBar.dart';
 import 'package:aula_abierta/widgets/button.dart';
@@ -52,7 +53,7 @@ class _PracticeLevelSelectionScreenState extends State<PracticeLevelSelectionScr
             ),
             Expanded(
               child: ListView.builder(
-                itemCount: 8,
+                itemCount: 10,
                 itemBuilder: (context, index) {
                   return Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 6),
@@ -84,11 +85,18 @@ class _PracticeLevelSelectionScreenState extends State<PracticeLevelSelectionScr
     Navigator.push(
         context,
         MaterialPageRoute(
-            builder: (context) => NoteSumlevel(
+            builder: (context) => level < 5
+                ? NoteSumlevel(
               difficulty: level,
               onLevelCompleted: () {
                 _markLevelAsCompleted(level);
               },
+            )
+                : NoteSubtractionLevel(
+                difficulty: level-5,
+                onLevelCompleted: () {
+                  _markLevelAsCompleted(level);
+                },
             )
         )
     );

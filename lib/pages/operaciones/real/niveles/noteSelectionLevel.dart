@@ -38,12 +38,22 @@ class _NoteSelectionLevelState extends State<NoteSelectionLevel> {
   void initState() {
     super.initState();
     products = ProductUtils.loadProducts();
-
-    productOrder = RandomUtils.nRandomDistinctLists(levelCount, 2, 0, products.length);
-
     notes = NoteUtils.loadNotes();
 
-    noteOrder = RandomUtils.nRandomDistinctLists(levelCount, 3, 0, notes.length);
+    switch (widget.difficulty){
+      case 0:
+        productOrder = RandomUtils.nRandomDistinctLists(levelCount, 1, 5, products.length);
+        noteOrder = RandomUtils.nRandomDistinctLists(levelCount, 3, 5, notes.length);
+        break;
+      case 1:
+        productOrder = RandomUtils.nRandomDistinctLists(levelCount, 2, 5, products.length);
+        noteOrder = RandomUtils.nRandomDistinctLists(levelCount, 3, 5, notes.length);
+        break;
+      case 2:
+        productOrder = RandomUtils.nRandomDistinctLists(levelCount, 2, 5, products.length);
+        noteOrder = RandomUtils.nRandomDistinctLists(levelCount, 4, 5, notes.length);
+        break;
+    }
 
     for(int i = 0; i < levelCount; i++){
       int correctValue = 0;
@@ -71,7 +81,6 @@ class _NoteSelectionLevelState extends State<NoteSelectionLevel> {
       correctValue += products[productOrder[currentIndex][i]]['value'] as int;
     }
 
-    // TODO: fix this, as it is selecting the leftmost note with a value greater than or equal to the correct value
     String? correctImage;
     int correctIndex = 0;
     int lowestPositiveDifference = 1000000;
