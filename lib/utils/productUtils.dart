@@ -27,7 +27,7 @@ class ProductUtils {
     Map<String, dynamic> leche = {
       'name': 'Bolsa de Leche',
       'value': 5500,
-      'route': 'assets/productos/leche.png'
+      'route': 'assets/productos/leche.webp'
     };
 
     productBox.put('leche', leche);
@@ -37,7 +37,7 @@ class ProductUtils {
     Map<String, dynamic> canastaHuevos = {
       'name': 'Canasta de Huevos',
       'value': 8800,
-      'route': 'assets/productos/huevos.png'
+      'route': 'assets/productos/huevos.webp'
     };
 
     productBox.put('canasta_huevos', canastaHuevos);
@@ -47,7 +47,7 @@ class ProductUtils {
     Map<String, dynamic> arroz = {
       'name': 'Libra de Arroz',
       'value': 2000,
-      'route': 'assets/productos/arroz.jpg'
+      'route': 'assets/productos/arroz.webp'
     };
 
     productBox.put('arroz', arroz);
@@ -57,7 +57,7 @@ class ProductUtils {
     Map<String, dynamic> atun = {
       'name': 'Lata de Atún',
       'value': 4500,
-      'route': 'assets/productos/atun.png'
+      'route': 'assets/productos/atun.webp'
     };
 
     productBox.put('atun', atun);
@@ -67,7 +67,7 @@ class ProductUtils {
     Map<String, dynamic> lentejas = {
       'name': 'Libra de Lentejas',
       'value': 3300,
-      'route': 'assets/productos/lentejas.jpg'
+      'route': 'assets/productos/lentejas.webp'
     };
 
     productBox.put('lentejas', lentejas);
@@ -77,7 +77,7 @@ class ProductUtils {
     Map<String, dynamic> frijoles = {
       'name': 'Libra de Frijoles',
       'value': 5200,
-      'route': 'assets/productos/frijoles.jpg'
+      'route': 'assets/productos/frijoles.webp'
     };
 
     productBox.put('frijoles', frijoles);
@@ -87,7 +87,7 @@ class ProductUtils {
     Map<String, dynamic> pan = {
       'name': 'Pan Tajado',
       'value': 3500,
-      'route': 'assets/productos/pan.png'
+      'route': 'assets/productos/pan.webp'
     };
 
     productBox.put('pan', pan);
@@ -97,7 +97,7 @@ class ProductUtils {
     Map<String, dynamic> arepas = {
       'name': 'Arepas',
       'value': 1600,
-      'route': 'assets/productos/arepas.png'
+      'route': 'assets/productos/arepas.webp'
     };
 
     productBox.put('arepas', arepas);
@@ -107,7 +107,7 @@ class ProductUtils {
     Map<String, dynamic> vinagre = {
       'name': 'Vinagre',
       'value': 2800,
-      'route': 'assets/productos/vinagre.png'
+      'route': 'assets/productos/vinagre.webp'
     };
 
     productBox.put('vinagre', vinagre);
@@ -117,7 +117,7 @@ class ProductUtils {
     Map<String, dynamic> sal = {
       'name': 'Kilo de Sal',
       'value': 2300,
-      'route': 'assets/productos/sal.png'
+      'route': 'assets/productos/sal.webp'
     };
 
     productBox.put('sal', sal);
@@ -127,7 +127,7 @@ class ProductUtils {
     Map<String, dynamic> azucar = {
       'name': 'Kilo de Azúcar',
       'value': 4700,
-      'route': 'assets/productos/azucar.png'
+      'route': 'assets/productos/azucar.webp'
     };
 
     productBox.put('azucar', azucar);
@@ -137,7 +137,7 @@ class ProductUtils {
     Map<String, dynamic> cafe = {
       'name': 'Tarro de Café',
       'value': 10500,
-      'route': 'assets/productos/cafe.png'
+      'route': 'assets/productos/cafe.webp'
     };
 
     productBox.put('cafe', cafe);
@@ -147,7 +147,7 @@ class ProductUtils {
     Map<String, dynamic> agua = {
       'name': 'Botella de Agua',
       'value': 1800,
-      'route': 'assets/productos/agua.png'
+      'route': 'assets/productos/agua.webp'
     };
 
     productBox.put('agua', agua);
@@ -157,7 +157,7 @@ class ProductUtils {
     Map<String, dynamic> jabon = {
       'name': '3 Barras de Jabón',
       'value': 5900,
-      'route': 'assets/productos/jabon.png'
+      'route': 'assets/productos/jabon.webp'
     };
 
     productBox.put('jabon', jabon);
@@ -167,7 +167,7 @@ class ProductUtils {
     Map<String, dynamic> champu = {
       'name': 'Botella de Champú',
       'value': 22000,
-      'route': 'assets/productos/champu.png'
+      'route': 'assets/productos/champu.webp'
     };
 
     productBox.put('champu', champu);
@@ -177,7 +177,7 @@ class ProductUtils {
     Map<String, dynamic> papelHigienico = {
       'name': 'Docena de Papel Higiénico',
       'value': 18000,
-      'route': 'assets/productos/papel_higienico.png'
+      'route': 'assets/productos/papel_higienico.webp'
     };
 
     productBox.put('papel_higienico', papelHigienico);
@@ -187,7 +187,7 @@ class ProductUtils {
     Map<String, dynamic> cremaDental = {
       'name': 'Crema Dental',
       'value': 10000,
-      'route': 'assets/productos/crema_dental.png'
+      'route': 'assets/productos/crema_dental.webp'
     };
 
     productBox.put('crema_dental', cremaDental);
@@ -197,7 +197,7 @@ class ProductUtils {
     Map<String, dynamic> detergente = {
       'name': 'Detergente en Polvo',
       'value': 6000,
-      'route': 'assets/productos/detergente.png'
+      'route': 'assets/productos/detergente.webp'
     };
 
     productBox.put('detergente', detergente);
@@ -207,7 +207,7 @@ class ProductUtils {
     Map<String, dynamic> gaseosa = {
       'name': 'Gaseosa',
       'value': 4000,
-      'route': 'assets/productos/gaseosa.jpg'
+      'route': 'assets/productos/gaseosa.webp'
     };
 
     productBox.put('gaseosa', gaseosa);
@@ -217,7 +217,7 @@ class ProductUtils {
     Map<String, dynamic> pasta = {
       'name': 'Paquete de Pasta',
       'value': 2100,
-      'route': 'assets/productos/pasta.png'
+      'route': 'assets/productos/pasta.webp'
     };
 
     productBox.put('pasta', pasta);
@@ -227,7 +227,7 @@ class ProductUtils {
     Map<String, dynamic> cereal = {
       'name': 'Caja de Cereal',
       'value': 6500,
-      'route': 'assets/productos/cereal.png'
+      'route': 'assets/productos/cereal.webp'
     };
 
     productBox.put('cereal', cereal);
@@ -237,7 +237,7 @@ class ProductUtils {
     Map<String, dynamic> mantequilla = {
       'name': 'Mantequilla',
       'value': 8000,
-      'route': 'assets/productos/mantequilla.png'
+      'route': 'assets/productos/mantequilla.webp'
     };
 
     productBox.put('mantequilla', mantequilla);
@@ -247,7 +247,7 @@ class ProductUtils {
     Map<String, dynamic> panela = {
       'name': 'Panela',
       'value': 7400,
-      'route': 'assets/productos/panela.png'
+      'route': 'assets/productos/panela.webp'
     };
 
     productBox.put('panela', panela);
@@ -257,7 +257,7 @@ class ProductUtils {
     Map<String, dynamic> harina = {
       'name': 'Harina',
       'value': 2200,
-      'route': 'assets/productos/harina.png'
+      'route': 'assets/productos/harina.webp'
     };
 
     productBox.put('harina', harina);
@@ -267,7 +267,7 @@ class ProductUtils {
     Map<String, dynamic> queso = {
       'name': 'Queso',
       'value': 9600,
-      'route': 'assets/productos/queso.png'
+      'route': 'assets/productos/queso.webp'
     };
 
     productBox.put('queso', queso);
@@ -277,7 +277,7 @@ class ProductUtils {
     Map<String, dynamic> jamon = {
       'name': 'Jamón',
       'value': 12000,
-      'route': 'assets/productos/jamon.png'
+      'route': 'assets/productos/jamon.webp'
     };
 
     productBox.put('jamon', jamon);
