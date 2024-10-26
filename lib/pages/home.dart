@@ -45,7 +45,7 @@ class HomePage extends StatelessWidget {
               ),
 
               CustomButton(
-                  text: "Quiz billetes",
+                  text: "Quiz",
                   onPressed: () {
                     Navigator.push(
                         context,

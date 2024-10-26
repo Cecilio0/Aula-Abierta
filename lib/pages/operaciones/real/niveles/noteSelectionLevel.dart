@@ -84,7 +84,7 @@ class _NoteSelectionLevelState extends State<NoteSelectionLevel> {
     String? correctImage;
     int correctIndex = 0;
     int lowestPositiveDifference = 1000000;
-    for(int i = 0; i < notes[currentIndex].length; i++){
+    for(int i = 0; i < noteOrder[currentIndex].length; i++){
       int difference = (notes[noteOrder[currentIndex][i]]['value'] as int) - correctValue;
       if(difference > 0 && difference < lowestPositiveDifference){
         lowestPositiveDifference = difference;
