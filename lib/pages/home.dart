@@ -37,7 +37,7 @@ class HomePage extends StatelessWidget {
                     "Bienvenido a la app de conciencia financiera de Aula Abierta 🤗",
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontSize: 30,
+                      fontSize: 28,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
@@ -87,9 +87,20 @@ class HomePage extends StatelessWidget {
                       )
                   );
                 }
-              )
-            ],
-          ),
+              ),
+              Container(
+                margin: const EdgeInsets.symmetric(vertical: 0, horizontal: 20),
+                child: const Text(
+                    "Desarrollado por Daniel Restrepo, Pablo Mesa y Simón González de la Universidad EIA",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w500,
+                    )
+                )
+              ),
+          ],
+        ),
       ),
     );
   }
