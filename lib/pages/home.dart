@@ -91,7 +91,7 @@ class HomePage extends StatelessWidget {
               Container(
                 margin: const EdgeInsets.symmetric(vertical: 0, horizontal: 20),
                 child: const Text(
-                    "Desarrollado por Daniel Restrepo, Pablo Mesa y Simón González de la Universidad EIA",
+                    "Desarrollado por Daniel Restrepo, Pablo Mesa y Simón González, estudiantes de Ingeniería de Sistemas y Computación de la Universidad EIA",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 12,
