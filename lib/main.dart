@@ -23,7 +23,7 @@ void main() async {
   await ProductUtils.saveProducts();
 
   // Load .env file
-  await dotenv.load(fileName: ".env");
+  await dotenv.load();
 
   // Set internal app configuration
   AppConfig().isDevMode = dotenv.env['DEV_MODE'] == 'true';
